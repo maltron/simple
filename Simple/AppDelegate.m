@@ -7,14 +7,19 @@
 //
 
 #import "AppDelegate.h"
+#import "SDialog.h"
+#import "SimpleController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    
+    SDialog *dialog = [[SDialog alloc] initWithTitle:@"My Dialog"];
+    SimpleController *controller = [[SimpleController alloc] initWithDialog:dialog];
+    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:controller];
+    [self.window setRootViewController:navigation];
     [self.window makeKeyAndVisible];
     return YES;
 }
